@@ -14,6 +14,7 @@
     "koa-middlewares": "~2.1.0",
     "koamethodoverride": "^1.0.1",
     "nodemailer": "^2.5.0",
+    "pg": "^6.1.0",
     "requests": "^0.1.7",
     "sequelize": "^3.24.1",
     "sqlite3": "^3.1.4"
