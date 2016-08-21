@@ -1,0 +1,9 @@
+<h1>Hook: <%= hook.id %></h1>
+
+<form action="/hooks/<%= hook.id %>" method="post">
+  <input type="hidden" name="_method" value="put" />
+  <input type="text" name="name" placeholder="Name" value="<%= hook.name %>" required></input>
+  <input type="text" name="event" placeholder="Event" value="<%= hook.event %>" require></input>
+  <textarea name="script" placeholder="Script"><%= hook.script %></textarea>
+  <button type="submit">Update hook</button>
+</form>

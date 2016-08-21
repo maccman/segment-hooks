@@ -1,0 +1,9 @@
+<h1>Hooks:</h1>
+
+<ul>
+<% hooks.forEach(function(hook){ %>
+   <li><a href="/hooks/<%= hook.id %>"><%= hook.name %></li>
+<% }) %>
+</ul>
+
+<a href="/hooks/new">New hook</a>
