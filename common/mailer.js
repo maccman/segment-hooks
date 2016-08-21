@@ -16,4 +16,4 @@ if (process.env.MAILGUN_SMTP_SERVER) {
   });
 }
 
-module.exports = mailer;
+exports.sendMail = mailer.sendMail.bind(mailer);
