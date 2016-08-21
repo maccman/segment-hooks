@@ -2,7 +2,7 @@
   "name": "Segment Hooks",
   "description": "Execute arbitary JavaScript from Segment events",
   "repository": "https://github.com/maccman/segment-hooks",
-  "logo": "https://node-js-sample.herokuapp.com/node.svg",
+  "logo": "https://raw.githubusercontent.com/segmentio/logo/master/images/logo.svg",
   "keywords": ["node", "segment"],
   "addons": [
     "heroku-postgresql"

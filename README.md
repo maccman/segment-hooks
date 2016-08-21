@@ -2,6 +2,7 @@
 
 Segment Hooks lets you execute arbitrary JavaScript when specific [Segment](http://segment.com) events are triggered. You could, for example, post a message in Slack when a user first signs up, or send an email to yourself when someone goes over their monthly quota.
 
+![Screenshot](https://cloud.githubusercontent.com/assets/2142/17839073/279c355c-6792-11e6-879d-39a12a914302.png)
 
 
 ## Getting started
@@ -13,6 +14,8 @@ The simplest way of getting up and running is via the Heroku button below.
 ### Configuring Segment
 
 Once you have a Heroku endpoint, you'll need to set up a [Segment](http://segment.com) webhook. You can add a custom webhook endpoint under your Segment apps integrations.
+
+![Segment](https://cloud.githubusercontent.com/assets/2142/17839081/4a88c83c-6792-11e6-8fb4-875c1022a89b.png)
 
 Configure the endpoint to be `https://your-app.herokuapp.com/events` - notice the `/events` trailing prefix.
 

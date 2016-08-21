@@ -3,9 +3,7 @@ var mailer;
 
 if (process.env.MAIL_URL) {
   mailer = nodemailer.createTransport(process.env.MAIL_URL);
-}
-
-if (process.env.MAILGUN_SMTP_SERVER) {
+} else if (process.env.MAILGUN_SMTP_SERVER) {
   mailer = nodemailer.createTransport({
     host: process.env.MAILGUN_SMTP_SERVER,
     port: process.env.MAILGUN_SMTP_PORT,
@@ -16,4 +14,8 @@ if (process.env.MAILGUN_SMTP_SERVER) {
   });
 }
 
-exports.sendMail = mailer.sendMail.bind(mailer);
+if (mailer) {
+  exports.sendMail = mailer.sendMail.bind(mailer);
+} else {
+  exports.sendMail = null;
+}
