@@ -6,14 +6,17 @@
 
 require('dotenv').config({silent: true});
 
-var middlewares = require('koa-middlewares');
-var routes = require('./routes');
-var config = require('./config');
-var path = require('path');
-var http = require('http');
-var koa = require('koa');
-var render = require('koa-ejs');
-var override = require('koamethodoverride');
+var middlewares = require('koa-middlewares'),
+    routes = require('./routes'),
+    config = require('./config'),
+    path = require('path'),
+    http = require('http'),
+    koa = require('koa'),
+    render = require('koa-ejs'),
+    session = require('koa-session'),
+    override = require('koamethodoverride'),
+    Grant = require('grant-koa'),
+    mount = require('koa-mount');
 
 var app = koa();
 
@@ -41,6 +44,28 @@ app.use(override());
 if (config.debug && process.env.NODE_ENV !== 'test') {
   app.use(middlewares.logger());
 }
+
+/**
+ * session
+ */
+app.keys = ['grant'];
+app.use(session(app));
+
+/**
+ * oauth
+ */
+var grant = new Grant(require('./common/auth_config'));
+app.use(mount(grant));
+
+/**
+ * auth barrier
+ */
+app.use(function*(next){
+  if ( !/^\/hooks/.test(this.request.url) ) return yield next;
+  if ( this.session.accessToken ) return yield next;
+
+  this.redirect('/connect/google');
+});
 
 /**
  * router

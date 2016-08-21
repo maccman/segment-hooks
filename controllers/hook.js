@@ -25,8 +25,7 @@ exports.new = function* () {
 exports.add = function* () {
   var hook = yield Hook.create(this.request.body);
 
-  this.body   = JSON.stringify(hook);
-  this.status = 201;
+  this.redirect('/hooks');
 };
 
 exports.update = function* () {
