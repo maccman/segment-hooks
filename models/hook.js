@@ -7,6 +7,7 @@ const testEvent = require('../test/fixtures/event');
 
 let Hook = db.define('hooks', {
   name:   Sequelize.STRING,
+  type:   Sequelize.STRING,
   event:  Sequelize.STRING,
   script: Sequelize.STRING,
 }, {

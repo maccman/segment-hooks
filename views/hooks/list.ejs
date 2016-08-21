@@ -10,16 +10,27 @@
     <div class="collapsible-body section">
       <form action="/hooks" method="post">
         <div class="row">
-          <div class="input-field col s6">
+          <div class="input-field col s4">
             <input type="text" name="name" id="name" class="validate" required />
             <label for="name">Hook name</label>
           </div>
 
-          <div class="input-field col s6">
-            <input type="text" name="event" id="event" class="validate" require />
-            <label for="event">Event name</label>
+          <div class="input-field col s4">
+            <select name="type" required>
+              <option value="identify">identify</option>
+              <option value="identify">track</option>
+            </select>
+
+            <label for="event">Event type</label>
           </div>
 
+          <div class="input-field col s4">
+            <input type="text" name="event" id="event" class="validate" />
+            <label for="event">Event name</label>
+          </div>
+        </div>
+
+        <div class="row">
           <div class="input-field col s12">
             <textarea name="script" id="script" class="materialize-textarea"></textarea>
             <label for="script">Hook JavaScript</label>
@@ -43,16 +54,34 @@
           <input type="hidden" name="_method" value="put" />
 
           <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col s4">
               <input type="text" name="name" id="name" class="validate" value="<%= hook.name %>" required />
               <label for="name">Hook name</label>
             </div>
 
-            <div class="input-field col s6">
+            <div class="input-field col s4">
+              <select name="type" required>
+                <option value="identify"
+                  <% if (hook.type == 'identify') { %>checked<% } %>>
+                    identify
+                </option>
+                <option value="track"
+                  <% if (hook.type == 'track') { %>checked<% } %>>
+                    track
+                </option>
+              </select>
+
+              <label for="event">Event type</label>
+            </div>
+
+
+            <div class="input-field col s4">
               <input type="text" name="event" id="event" value="<%= hook.event %>" class="validate" require />
               <label for="event">Event name</label>
             </div>
+          </div>
 
+          <div class="row">
             <div class="input-field col s12">
               <textarea name="script" id="script" class="materialize-textarea"><%= hook.script %></textarea>
               <label for="script">Hook JavaScript</label>
