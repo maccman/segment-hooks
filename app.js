@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-require('dotenv').config();
+require('dotenv').config({silent: true});
 
 var middlewares = require('koa-middlewares');
 var routes = require('./routes');

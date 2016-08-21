@@ -30,7 +30,7 @@
     "todo"
   ],
   "engines": {
-    "node": "~0.11.11"
+    "node": "~6.4.0"
   },
   "author": "Alex MacCaw <alex@alexmaccaw.com>",
   "license": "MIT"
