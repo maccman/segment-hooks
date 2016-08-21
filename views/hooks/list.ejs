@@ -18,7 +18,7 @@
           <div class="input-field col s4">
             <select name="type" required>
               <option value="identify">identify</option>
-              <option value="identify">track</option>
+              <option value="track">track</option>
             </select>
 
             <label for="event">Event type</label>
@@ -62,11 +62,11 @@
             <div class="input-field col s4">
               <select name="type" required>
                 <option value="identify"
-                  <% if (hook.type == 'identify') { %>checked<% } %>>
+                  <% if (hook.type === 'identify') { %>selected<% } %>>
                     identify
                 </option>
                 <option value="track"
-                  <% if (hook.type == 'track') { %>checked<% } %>>
+                  <% if (hook.type === 'track') { %>selected<% } %>>
                     track
                 </option>
               </select>
