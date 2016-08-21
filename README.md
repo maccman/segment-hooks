@@ -17,13 +17,13 @@ Once you have a Heroku endpoint, you'll need to set up a [Segment](http://segmen
 
 ![Segment](https://cloud.githubusercontent.com/assets/2142/17839081/4a88c83c-6792-11e6-8fb4-875c1022a89b.png)
 
-Configure the endpoint to be `https://your-app.herokuapp.com/events` - notice the `/events` trailing prefix.
+Configure the endpoint to be `https://your-app.herokuapp.com/events` - notice the `/events` trailing path.
 
 That's it - you're all setup!
 
 ## Authentication
 
-Clearly this app is best concealed behind a authentication layer. Segment Hooks comes with out the box support for Google Apps auth (but it's fairly straightorward to add others). You'll need to set the following env vars:
+Clearly this app is best concealed behind a authentication layer. Segment Hooks comes with out the box support for Google Apps auth (and it's fairly straightorward to add alternatives). You'll need to set the following env vars:
 
     GOOGLE_CALLBACK: your-app.herokuapp.com
     GOOGLE_DOMAIN: your-google-apps-domain.com
