@@ -17,9 +17,15 @@ exports.process = function* () {
 
   console.log('Found hooks count', hooks.length);
 
-  for (var i = hooks.length - 1; i >= 0; i--) {
-    yield hooks[i].process(event);
-  }
-
   this.status = 200;
+
+  for (var i = hooks.length - 1; i >= 0; i--) {
+    try {
+      yield hooks[i].process(event);
+    } catch (err) {
+      this.body = err + '';
+      this.status = 500;
+      break;
+    }
+  }
 };

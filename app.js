@@ -51,21 +51,22 @@ if (config.debug && process.env.NODE_ENV !== 'test') {
 app.keys = ['grant'];
 app.use(session(app));
 
-/**
- * oauth
- */
-var grant = new Grant(require('./common/auth_config'));
-app.use(mount(grant));
 
 /**
  * auth barrier
  */
-app.use(function*(next){
-  if ( !/^\/hooks/.test(this.request.url) ) return yield next;
-  if ( this.session.accessToken ) return yield next;
 
-  this.redirect('/connect/google');
-});
+if (config.grant.enabled) {
+  var grant = new Grant(config.grant);
+  app.use(mount(grant));
+
+  app.use(function*(next){
+    if ( !/^\/hooks/.test(this.request.url) ) return yield next;
+    if ( this.session.accessToken ) return yield next;
+
+    this.redirect('/connect/google');
+  });
+}
 
 /**
  * router
