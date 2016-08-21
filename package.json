@@ -16,7 +16,7 @@
     "nodemailer": "^2.5.0",
     "requests": "^0.1.7",
     "sequelize": "^3.24.1",
-    "sqlite3": "^3.1.4",
+    "sqlite3": "^3.1.4"
   },
   "devDependencies": {
     "should": "3.1.3"
