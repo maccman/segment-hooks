@@ -17,7 +17,7 @@ exports.process = function* () {
 
   console.log('Found hooks count', hooks.length);
 
-  hooks.forEach(function* (hook){
+  yield hooks.forEach(function* (hook){
     yield hook.process(event);
   });
 
