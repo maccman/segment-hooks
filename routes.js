@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var hook = require('./controllers/hook');
+var hooks = require('./controllers/hooks');
 var events = require('./controllers/events');
 var sessions = require('./controllers/sessions');
 
@@ -12,12 +12,11 @@ module.exports = function routes(app) {
   app.get('/', function*(){
     this.redirect('/hooks');
   });
-  app.get('/hooks', hook.list);
-  app.get('/hooks/new', hook.new);
-  app.get('/hooks/:id', hook.show);
-  app.post('/hooks', hook.add);
-  app.put('/hooks/:id', hook.update);
-  app.del('/hooks/:id', hook.destroy);
+  app.get('/hooks', hooks.list);
+  app.post('/hooks', hooks.add);
+  app.post('/hooks/:id/test', hooks.test);
+  app.put('/hooks/:id', hooks.update);
+  app.del('/hooks/:id', hooks.destroy);
   app.post('/events', events.process);
   app.get('/sessions/create', sessions.create);
 };

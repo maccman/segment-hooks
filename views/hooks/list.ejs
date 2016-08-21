@@ -1,9 +1,86 @@
-<h1>Hooks:</h1>
+<h1>Segment Hooks</h1>
 
-<ul>
-<% hooks.forEach(function(hook){ %>
-   <li><a href="/hooks/<%= hook.id %>"><%= hook.name %></li>
-<% }) %>
+<ul class="collapsible popout" data-collapsible="accordion">
+  <li>
+    <div class="collapsible-header">
+      <i class="material-icons">playlist_add</i>
+      New Hook
+    </div>
+
+    <div class="collapsible-body section">
+      <form action="/hooks" method="post">
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" name="name" id="name" class="validate" required />
+            <label for="name">Hook name</label>
+          </div>
+
+          <div class="input-field col s6">
+            <input type="text" name="event" id="event" class="validate" require />
+            <label for="event">Event name</label>
+          </div>
+
+          <div class="input-field col s12">
+            <textarea name="script" id="script" class="materialize-textarea"></textarea>
+            <label for="script">Hook JavaScript</label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn waves-effect waves-light blue">Create hook</button>
+      </form>
+    </div>
+  </li>
+
+  <% hooks.forEach(function(hook){ %>
+    <li>
+      <div class="collapsible-header">
+        <i class="material-icons">list</i>
+        <%= hook.name %>
+      </div>
+
+      <div class="collapsible-body section">
+        <form action="/hooks/<%= hook.id %>" method="post">
+          <input type="hidden" name="_method" value="put" />
+
+          <div class="row">
+            <div class="input-field col s6">
+              <input type="text" name="name" id="name" class="validate" value="<%= hook.name %>" required />
+              <label for="name">Hook name</label>
+            </div>
+
+            <div class="input-field col s6">
+              <input type="text" name="event" id="event" value="<%= hook.event %>" class="validate" require />
+              <label for="event">Event name</label>
+            </div>
+
+            <div class="input-field col s12">
+              <textarea name="script" id="script" class="materialize-textarea"><%= hook.script %></textarea>
+              <label for="script">Hook JavaScript</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col s3">
+              <button type="submit" class="btn waves-effect waves-light blue">
+                Update hook
+              </button>
+            </div>
+
+            <div class="col s3">
+              <a href="/hooks/<%= hook.id %>/test?_method=post"
+                 class="btn waves-effect waves-light">
+                Test hook
+              </a>
+            </div>
+
+            <div class="col s6 right-align">
+              <a href="/hooks/<%= hook.id %>?_method=delete" onclick="confirm('are you sure?')" class="btn waves-effect waves-light red">
+                Delete hook
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </li>
+  <% }) %>
 </ul>
-
-<a href="/hooks/new">New hook</a>
