@@ -4,7 +4,14 @@ const Hook = require('../models/hook');
 
 exports.process = function* () {
   var event = this.request.body;
-  var hooks = yield Hook.findAll({where: {event: event.type}});
+
+  var query = {type: event.type};
+
+  if (event.event) {
+    Object.assign(query, {event: event.event});
+  }
+
+  var hooks = yield Hook.findAll({where: query});
 
   hooks.forEach(function* (hook){
     yield hook.process(event);
