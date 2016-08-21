@@ -1,5 +1,5 @@
 let request = require('co-request');
-let mailer  = require('./mailer');
+let sendMail = require('./mailer').sendMail;
 
 module.exports = function* (source, event) {
   return eval(source);
